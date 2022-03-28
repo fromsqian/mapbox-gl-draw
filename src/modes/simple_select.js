@@ -160,22 +160,23 @@ SimpleSelect.startOnActiveFeature = function(state, e) {
   state.dragMoveLocation = e.lngLat;
 };
 
-SimpleSelect.clickOnFeature = function(state, e) {
+SimpleSelect.clickOnFeature = function() {
   // Stop everything
-  doubleClickZoom.disable(this);
-  this.stopExtendedInteractions(state);
-
-  const isShiftClick = CommonSelectors.isShiftDown(e);
-  const selectedFeatureIds = this.getSelectedIds();
-  const featureId = e.featureTarget.properties.id;
-  const isFeatureSelected = this.isSelected(featureId);
-
-  // Click (without shift) on any selected feature but a point
-  if (!isShiftClick && isFeatureSelected && this.getFeature(featureId).type !== Constants.geojsonTypes.POINT) {
-    // Enter direct select mode
-    return this.changeMode(Constants.modes.DIRECT_SELECT, {
-      featureId
-    });
+  // doubleClickZoom.disable(this);
+  // this.stopExtendedInteractions(state);
+  //
+  // const isShiftClick = CommonSelectors.isShiftDown(e);
+  // const selectedFeatureIds = this.getSelectedIds();
+  // const featureId = e.featureTarget.properties.id;
+  // const isFeatureSelected = this.isSelected(featureId);
+  //
+  // // Click (without shift) on any selected feature but a point
+  // if (!isShiftClick && isFeatureSelected && this.getFeature(featureId).type !== Constants.geojsonTypes.POINT) {
+  //   // Enter direct select mode
+  //   return this.changeMode(Constants.modes.DIRECT_SELECT, {
+  //     featureId
+  //   });
+  console.log('1');
   }
 
   // Shift-click on a selected feature
@@ -220,9 +221,8 @@ SimpleSelect.onTouchStart = function(state, e) {
   if (CommonSelectors.isActiveFeature(e)) return this.startOnActiveFeature(state, e);
 };
 
-SimpleSelect.onDrag = function(state, e) {
-  if (state.canDragMove) return this.dragMove(state, e);
-  if (this.drawConfig.boxSelect && state.canBoxSelect) return this.whileBoxSelect(state, e);
+SimpleSelect.onDrag = function() {
+  console.log('1');
 };
 
 SimpleSelect.whileBoxSelect = function(state, e) {
