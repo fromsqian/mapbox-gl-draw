@@ -160,7 +160,7 @@ SimpleSelect.startOnActiveFeature = function (state, e) {
   state.dragMoveLocation = e.lngLat;
 };
 
-SimpleSelect.clickOnFeature = function () {
+SimpleSelect.clickOnFeature = function (state, e) {
   //Stop everything
   doubleClickZoom.disable(this);
   this.stopExtendedInteractions(state);
